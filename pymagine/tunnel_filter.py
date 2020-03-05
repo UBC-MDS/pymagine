@@ -3,6 +3,9 @@ Created on February 28, 2020
 @author: Katie Birchard
 Implementation of tunnel_filter function in the pymagine package.
 """
+import math
+from PIL import Image 
+import numpy as np
 
 def tunnel_filter(image_path, k=0.5, rot=0.5):
   """
@@ -49,7 +52,7 @@ def tunnel_filter(image_path, k=0.5, rot=0.5):
     raise ValueError("Rotation degree must be within -0.5 and 0.5.")
   
   # Read in the image file and convert to array 
-  pic = PIL.Image.open(image_path) 
+  pic = Image.open(image_path) 
   pic_array = np.array(pic)
   
   # Get height and width
@@ -86,5 +89,5 @@ def tunnel_filter(image_path, k=0.5, rot=0.5):
           # Applying distortion to new image array
           tunnel_array[x, y] = pic_array[int(x3), int(y3)]
                     
-  return PIL.Image.fromarray(tunnel_array).show() 
+  return Image.fromarray(tunnel_array).show() 
   
