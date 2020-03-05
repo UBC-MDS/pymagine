@@ -5,14 +5,14 @@ Implementation of tunnel_filter function in the pymagine package.
 """
 
 
-def tunnel_filter(image, k=0.5, rot=0.5):
+def tunnel_filter(image_path, k=0.5, rot=0.5):
   """
   Returns the given image with the user-specified
   pincushion distortion applied.
   
   Parameters
   ----------
-  image: string
+  image_path: string
     The local file path to the image for which the
     filter will be applied
   
@@ -31,9 +31,26 @@ def tunnel_filter(image, k=0.5, rot=0.5):
     image returned with the desired distortion filter 
     applied
   """
+  if not isinstance(image_path, str):
+    raise TypeError("Image file path must be a string.")
+    
+  if not image_path.endswith((".png", ".jpeg", ".jpg")):
+    raise TypeError("Image format must be png, jpg, or jpeg.")
+    
+  if image_path.startswith(("https:", "http:", "www.")):
+    raise TypeError("Image file path can't be a URL, provide a local file path.")
+    
+  if not isinstance(k, float):
+    raise TypeError("Distortion coefficient must be a float.")
+    
+  if not isinstance(rot, float):
+    raise TypeError("Rotation degree must be a float.")
+    
+  if rot > 0.5 or rot < -0.5:
+    raise ValueError("Rotation degree must be within -0.5 and 0.5.")
   
   # Read in the image file and convert to array 
-  pic = Image.open(image) 
+  pic = Image.open(image_path) 
   pic_array = np.array(pic)
   
   # Get height and width
