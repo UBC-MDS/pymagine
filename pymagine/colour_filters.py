@@ -10,8 +10,8 @@ import numpy as np
 def colour_filters(image, tone="sepia"):
   
   """
-  Returns the given image with the user-specified
-  color filter applied.
+  Saves the given image in the current working directory with 
+  the user-specified color filter applied.
   
   Parameters
   ----------
@@ -20,7 +20,7 @@ def colour_filters(image, tone="sepia"):
     
   tone: string
     Colour filter to be applied to the image 
-    Options: 'sepia', 'grayscale', 'rose-tone', 'blue-tone'
+    Options: 'sepia', 'grayscale', 'blue_tone', 'green_tone', 'red_tone', 'negative'
     Default: 'sepia'
     
   Returns
@@ -63,6 +63,8 @@ def colour_filters(image, tone="sepia"):
   green_pixel = pixels[1]
   blue_pixel = pixels[2]
     
+  n = image[:,:,0].shape
+  
   ### end of finding R,G,B pixels
   
   if tone.lower() == 'grayscale':
@@ -75,63 +77,66 @@ def colour_filters(image, tone="sepia"):
       new_pixel = transformed_blue + transformed_green + transformed_red
       
       gray_image = np.reshape(new_pixel, image_2d.shape)
-      final_image = plt.imshow(gray_image, cmap='gray')
+      plt.imsave(fname="colour_filter.jpeg", arr=gray_image, cmap="gray")
   
   elif tone.lower() == 'negative':
       image_2d = image[:, :, 0]
       
       negative_image = image_2d.copy()
       negative_image = 255 - image_2d
-      final_image = plt.imshow(negative_image, cmap="gray")
+      
+      plt.imsave(fname="colour_filter.jpeg", arr=negative_image, cmap="gray")
       
   elif tone.lower() == 'red_tone':
       transformed_red = red_pixel*0.75
       transformed_blue = blue_pixel*0.125
       transformed_green = green_pixel*0.125
 
-      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(int)
-      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(int)
-      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(int)
+      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(np.uint8)
+      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(np.uint8)
+      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(np.uint8)
       
       final_image_array = np.dstack((np.reshape(transformed_red, n), np.reshape(transformed_green, n), np.reshape(transformed_blue, n)))
-      final_image = plt.imshow(final_image_array)
+      
+      plt.imsave(fname="colour_filter.jpeg", arr=final_image_array)
       
   elif tone.lower() == 'blue_tone':
       transformed_red = red_pixel*0.12
       transformed_blue = blue_pixel*0.70
       transformed_green = green_pixel*0.17
 
-      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(int)
-      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(int)
-      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(int)
+      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(np.uint8)
+      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(np.uint8)
+      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(np.uint8)
       
       final_image_array = np.dstack((np.reshape(transformed_red, n), np.reshape(transformed_green, n), np.reshape(transformed_blue, n)))
-      final_image = plt.imshow(final_image_array)
+      
+      plt.imsave(fname="colour_filter.jpeg", arr=final_image_array)
       
   elif tone.lower() == 'green_tone':
       transformed_red = red_pixel*0.12
       transformed_blue = blue_pixel*0.17
       transformed_green = green_pixel*0.70
 
-      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(int)
-      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(int)
-      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(int)
+      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(np.uint8)
+      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(np.uint8)
+      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(np.uint8)
       
       final_image_array = np.dstack((np.reshape(transformed_red, n), np.reshape(transformed_green, n), np.reshape(transformed_blue, n)))
-      final_image = plt.imshow(final_image_array)
+      
+      plt.imsave(fname="colour_filter.jpeg", arr=final_image_array)
   
   else:
       transformed_red = red_pixel*0.393 + green_pixel*0.769 + blue_pixel*0.189
       transformed_blue = red_pixel*0.272 + green_pixel*0.534 + blue_pixel*0.131
       transformed_green = red_pixel*0.349 + green_pixel*0.686 + blue_pixel*0.168
 
-      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(int)
-      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(int)
-      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(int)
-      
-      n = image[:,:,0].shape
+      transformed_red = (np.where(transformed_red > 255, 255, transformed_red)).astype(np.uint8)
+      transformed_green = (np.where(transformed_green > 255, 255, transformed_green)).astype(np.uint8)
+      transformed_blue = (np.where(transformed_blue > 255, 255, transformed_blue)).astype(np.uint8)
       
       final_image_array = np.dstack((np.reshape(transformed_red, n), np.reshape(transformed_green, n), np.reshape(transformed_blue, n)))
-      final_image = plt.imshow(final_image_array)
+      
+      plt.imsave(fname="colour_filter.jpeg", arr=final_image_array)
   
-  return final_image
+  return print("The filtered image has been saved to the working directory")
