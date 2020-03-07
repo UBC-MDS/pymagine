@@ -89,5 +89,5 @@ def tunnel_filter(image_path, k=0.5, rot=0.5):
           # Applying distortion to new image array
           tunnel_array[x, y] = pic_array[int(x3), int(y3)]
                     
-  return Image.fromarray(tunnel_array).show() 
+cv2.imwrite('tunnel.jpg',Image.fromarray(tunnel_array))
   
