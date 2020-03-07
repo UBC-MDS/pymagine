@@ -6,8 +6,8 @@ Implementation of vignette_filter function in the pymagine package.
 
 def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
   """
-  Returns the given image with the vignette filter applied 
-  at the specified strength.
+  Applies vignette filter to a given image at the specified strength 
+  and focal point then saves the result to the current working directory.
   
   Parameters
   ----------
@@ -29,10 +29,6 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
     along the y axis.
     Default: 0.5
   
-  Returns
-  -------
-  image
-    image returned with the desired filter applied
   """
   if not isinstance(image_path, str):
         raise TypeError("Image file path must be a string.")
@@ -77,5 +73,5 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
   image_modified[:,:,1] = image[:,:,1]*filt_2d_scaled
   image_modified[:,:,2] = image[:,:,2]*filt_2d_scaled
   
-  # likely need to update below to return an image, rather than writing to disk
-  return cv2.imwrite('vignette.jpg',image_modified)
+  # write image to disk
+  cv2.imwrite('vignette.jpg',image_modified)
