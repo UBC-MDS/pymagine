@@ -31,7 +31,11 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
   
   """
   if not isinstance(image_path, str):
+<<<<<<< HEAD
       raise TypeError("Image file path must be a string.")
+=======
+    raise TypeError("Image file path must be a string.")
+>>>>>>> b4a1b0dda89227aa7f0c3883276633ea1eb559f3
     
   if not image_path.endswith((".png", ".jpeg", ".jpg")):
       raise TypeError("Image format must be png, jpg, or jpeg.")
