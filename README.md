@@ -18,8 +18,8 @@ pip install -i https://test.pypi.org/simple/ pymagine
 
 In this package we intend to create four main functions that accept an image as input and apply different types of manipulations and provide a new output image as summarized below:
 
-1. **Barrel 'fisheye' distortion**: produces an image with strong visual distortion intended to create a wide panoramic or hemispherical effect
-    - *Stretch goal*: 'pincushion' distortion, effectively the inverse of fisheye distortion
+1. **Tunnel distortion**: produces an image with strong visual distortion intended to create a tunnel or pincushion effect
+    - *Stretch goal*: 'barrel' distortion, effectively the inverse of tunnel distortion
 2. **Colour filters**: produces an image with different user-specified colour distortions (ex: sepia tone)
     - *Stretch goal*: allowing the user to specify the strength of the effect via a parameter
 3. **Edge detection**: identifies edges by looking at where the image brightness changes sharply, and produces a black and white image highlighting the locations of these edges
@@ -34,13 +34,40 @@ In this package we intend to create four main functions that accept an image as 
 A variety of image processing packages providing some similar functionality already exist within the Python ecosystem, including [Pillow](https://github.com/python-pillow/Pillow), [scikit-image](https://github.com/scikit-image/scikit-image), and the more advanced computer vision oriented [OpenCV](https://github.com/opencv/opencv). The purpose of our package is to provide functions that apply some common artistic filter transformations to a given input image.
 
 
+
 ### Dependencies
 
-- TODO
+The following python packages are required to run `pymagine`:
+* numpy==1.18.1
+* scikit-image==0.16.1
+* scipy==1.2.3
+* matplotlib==3.1.3
+* cv2==4.2.0
+* math==3.8.2
+* PIL==7.0.0
+* testpypi==1.3.0
 
 ### Usage
 
-- TODO
+Load the pymagine library:
+
+`from pymagine import pymagine`
+
+Apply a vignette filter to an image:
+
+`vignette_filter("~\image.jpg", strength=0.5, x=0.2, y=0.8)`
+
+Apply a colour filter to an image:
+
+`colour_filter("~\image.jpg", tone="blue_tone")`
+
+Apply a tunnel filter to an image:
+
+`tunnel_filter("~\image.jpg", k=0.5, rot=-0.2)`
+
+Apply an edge detection filter to an image:
+
+`edge_detection("~\image.jpg", color="Purples", is_grey=False)`
 
 ### Documentation
 The official documentation is hosted on Read the Docs: <https://pymagine.readthedocs.io/en/latest/>
