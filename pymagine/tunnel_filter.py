@@ -30,9 +30,7 @@ def tunnel_filter(image_path, k=0.5, rot=0.5):
   
   Returns
   -------
-  image
-    image returned with the desired distortion filter 
-    applied
+  Prints the location of the saved image with filter applied
   """
   if not isinstance(image_path, str):
     raise TypeError("Image file path must be a string.")
