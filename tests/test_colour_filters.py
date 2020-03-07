@@ -9,6 +9,9 @@ bad_ftype = 'imgs/coronado_beach.csv'
 url_fname = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg'
 
 def test_inputs():
+"""
+Applies tests to the colour_filters function to ensure proper usage.
+"""
     with pytest.raises(TypeError):
        cf.colour_filters(2) # Not a string for the file path
     with pytest.raises(TypeError):
