@@ -7,6 +7,7 @@ import numpy as np
 from skimage.color import rgb2gray
 from scipy.signal import convolve2d
 import matplotlib.pyplot as plt
+import cv2
 
 def edge_detection(filename, color = 'Greys', is_grey = False):
     """
@@ -22,6 +23,9 @@ def edge_detection(filename, color = 'Greys', is_grey = False):
     Color of edge detection filter to be applied to the image 
     Options: 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds'
     Default: 'Greys'
+
+  is_grey: boolean
+    input is True or False depending on whether the image is greyscale or not
     
   Returns
   -------
@@ -53,4 +57,5 @@ def edge_detection(filename, color = 'Greys', is_grey = False):
         img = rgb2gray(img)
         I_filt = convolve2d(img,filt, boundary='symm', mode='same')
         
-    return plt.imshow(I_filt, cmap = color)
+    cv2.imwrite("edge_detect.jpeg", I_filt)
+    print("The filtered image has been saved to the working directory")
