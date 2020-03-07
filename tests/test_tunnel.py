@@ -14,6 +14,9 @@ bad_ftype = 'imgs/coronado_beach.csv'
 url_fname = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg'
 
 def test_tunnel():
+  """
+  Runs the tests for the test_tunnel function.
+  """
   # File path must be a string
   with pytest.raises(TypeError):
     tun.tunnel_filter(20)

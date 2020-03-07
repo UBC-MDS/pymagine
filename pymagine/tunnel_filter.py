@@ -76,7 +76,7 @@ def tunnel_filter(image_path, k=0.5, rot=0.5):
           r = np.sqrt(norm_x**2 + norm_y**2)/max_radius
           
           # Adding distortion strength  
-          x2 = norm_x / (1 + (k*(r**4) + k*(r**2) * k*r))
+          x2 = norm_x / (1 + (k*(r**4) + k*(r**2) + k*r))
           y2 = norm_y/ (1 + (k*(r**4) + k*(r**2) + k*r))
           
           # Adding distortion and rotation
@@ -90,4 +90,5 @@ def tunnel_filter(image_path, k=0.5, rot=0.5):
           tunnel_array[x, y] = pic_array[int(x3), int(y3)]
                     
   return Image.fromarray(tunnel_array).show() 
+  print("The filtered image has been saved to the working directory")
   
