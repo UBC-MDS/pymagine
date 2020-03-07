@@ -6,7 +6,7 @@ Implementation of tunnel_filter function in the pymagine package.
 import math
 from PIL import Image 
 import numpy as np
-
+import cv2
 def tunnel_filter(image_path, k=0.5, rot=0.5):
   """
   Returns the given image with the user-specified
