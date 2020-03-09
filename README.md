@@ -43,6 +43,7 @@ The following python packages are required to run `pymagine`:
 * scipy==1.2.3
 * matplotlib==3.1.3
 * opencv-python==4.2.0
+* flake8==3.7.9
 * Pillow==7.0.0
 * testpypi==1.3.0
 
