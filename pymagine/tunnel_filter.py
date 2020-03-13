@@ -30,7 +30,7 @@ def tunnel_filter(image_path, rot=0.5):
     numpy array
     Altered image array returned for the input tunnel
     filter
-    
+
     Example
     -------
     >>> tunnel_filter("img/picture.jpeg", rot=0.2)
