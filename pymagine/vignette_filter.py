@@ -33,6 +33,14 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
       along the y axis.
       Default: 0.5
 
+    Returns
+    -------
+    numpy array
+    altered image array with effect applied
+
+    Example
+    -------
+    >>> vignette_filter("img/picture.jpeg", strength=2.5, a=0.25, b=0.75)
     """
     if not isinstance(image_path, str):
         raise TypeError("Image file path must be a string.")
@@ -83,3 +91,5 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
     # write image to disk
     cv2.imwrite('vignette.jpg', image_modified)
     print("The filtered image has been saved to the working directory")
+
+    return image_modified
