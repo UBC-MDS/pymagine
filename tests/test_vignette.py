@@ -38,4 +38,4 @@ def test_outputs():
 
     # verify output image is the same dimensions as the input image
     returned_arr_vignette = vig.vignette_filter(fname)
-    assert returned_arr_vignette.shape == test_array[:, :, 0].shape
+    assert returned_arr_vignette.shape == test_array.shape
