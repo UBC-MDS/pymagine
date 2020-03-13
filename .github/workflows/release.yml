@@ -57,9 +57,6 @@ jobs:
         poetry run semantic-release version
         poetry version $(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
         git commit -m "Add changes" -a
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEBUG: semantic_release.*
     - name: Push package version changes
       uses: ad-m/github-push-action@master
       with:
