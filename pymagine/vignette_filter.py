@@ -37,6 +37,10 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
     -------
     numpy array
     altered image array with effect applied
+
+    Example
+    -------
+    >>> vignette_filter("img/picture.jpeg", strength=2.5, a=0.25, b=0.75)
     """
     if not isinstance(image_path, str):
         raise TypeError("Image file path must be a string.")
