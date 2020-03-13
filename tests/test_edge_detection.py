@@ -26,3 +26,13 @@ def test_inputs():
        ed.edge_detection(fname, color = "Pinks") # Invalid color value
    with pytest.raises(ValueError):
        ed.edge_detection(fname, color = "Greys", is_grey = "Greys") # Invalid is_grey input
+
+def test_outputs():
+    """
+    Applies tests to the function output
+    """
+    test_array = plt.imread(fname)
+
+    # verify output image is the same dimensions as the input image
+    returned_arr_edge_detection = ed.edge_detection(fname)
+    assert returned_arr_edge_detection.shape == test_array.shape

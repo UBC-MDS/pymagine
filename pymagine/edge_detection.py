@@ -29,8 +29,12 @@ def edge_detection(filename, color = 'Greys', is_grey = False):
     
   Returns
   -------
-  image 
-  image returned with desired edge detection color filter applied
+  numpy array 
+  Altered image array returned for the input edge_detection filter
+
+  Example
+  -------
+  >>> edge_detection("img/picture.jpg", color = 'Greys', is_grey = False)
     """
     if not isinstance(filename, str):
         raise TypeError("Image file path must be a string.")
@@ -56,6 +60,6 @@ def edge_detection(filename, color = 'Greys', is_grey = False):
         img = plt.imread(filename)
         img = rgb2gray(img)
         I_filt = convolve2d(img,filt, boundary='symm', mode='same')
-        
-    cv2.imwrite("edge_detect.jpeg", I_filt)
+    
     print("The filtered image has been saved to the working directory")
+    return I_filt
