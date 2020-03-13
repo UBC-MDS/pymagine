@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import cv2
 
 
-def edge_detection(filename, is_grey=False):
+def edge_detection(filename):
     """
     Returns the given image with the greyscale
   edge detection applied.
@@ -20,9 +20,6 @@ def edge_detection(filename, is_grey=False):
   image: string
     The local file path for image to which filter will be applied
 
-  is_grey: boolean
-    input is True or False depending on whether the image is greyscale or not
-
   Returns
   -------
   numpy array
@@ -30,7 +27,7 @@ def edge_detection(filename, is_grey=False):
 
   Example
   -------
-  >>> edge_detection("img/picture.jpg", color = 'Greys', is_grey = False)
+  >>> edge_detection("img/picture.jpg")
     """
     if not isinstance(filename, str):
         raise TypeError("Image file path must be a string.")
@@ -44,14 +41,9 @@ def edge_detection(filename, is_grey=False):
 
     filt = np.ones((3, 3)) / 8
 
-    if is_grey:
-        img = plt.imread(filename)
-        I_filt = convolve2d(img, filt, boundary='symm', mode='same')
-
-    else:
-        img = plt.imread(filename)
-        img = rgb2gray(img)
-        I_filt = convolve2d(img, filt, boundary='symm', mode='same')
+    img = plt.imread(filename)
+    img = rgb2gray(img)
+    I_filt = convolve2d(img, filt, boundary='symm', mode='same')
 
     cv2.imwrite('edge_detection.jpg', I_filt)
 
