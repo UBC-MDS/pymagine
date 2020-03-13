@@ -10,8 +10,8 @@ import numpy as np
 def colour_filters(image, tone="sepia"):
   
   """
-  Saves the given image in the current working directory with 
-  the user-specified color filter applied.
+  Saves the given image in the current working directory with the 
+  user-specified color filter applied and returns the altered image array.
   
   Parameters
   ----------
@@ -25,8 +25,8 @@ def colour_filters(image, tone="sepia"):
     
   Returns
   -------
-  image 
-  image returned with desired colour filter applied
+  numpy array 
+  altered image array returned for the input colour filter
   """
   if not isinstance(image, str):
     raise TypeError("File path must be a string")
@@ -77,12 +77,14 @@ def colour_filters(image, tone="sepia"):
       new_pixel = transformed_blue + transformed_green + transformed_red
       
       gray_image = np.reshape(new_pixel, image_2d.shape)
+      final_image_array = gray_image
       plt.imsave(fname="colour_filter.jpeg", arr=gray_image, cmap="gray")
   
   elif tone.lower() == 'negative':
       image_2d = image[:, :, 0]
       
       negative_image = image_2d.copy()
+      final_image_array = negative_image
       negative_image = 255 - image_2d
       
       plt.imsave(fname="colour_filter.jpeg", arr=negative_image, cmap="gray")
@@ -139,4 +141,5 @@ def colour_filters(image, tone="sepia"):
       
       plt.imsave(fname="colour_filter.jpeg", arr=final_image_array)
   
-  return print("The filtered image has been saved to the working directory")
+  print("The filtered image has been saved to the working directory")
+  return final_image_array
