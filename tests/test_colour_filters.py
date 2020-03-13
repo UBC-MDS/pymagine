@@ -32,10 +32,10 @@ def test_outputs():
     
     returned_arr_grayscale = cf.colour_filters(fname, tone="grayscale")
     returned_arr_negative = cf.colour_filters(fname, tone="negative")
-    returned_arr_red = cf.colour_filter(fname, tone="red_tone")
-    returned_arr_green = cf.colour_filter(fname, tone="green_tone")
-    returned_arr_blue = cf.colour_filter(fname, tone="blue_tone")
-    returned_arr_sepia = cf.colour_filter(fname, tone="sepia")
+    returned_arr_red = cf.colour_filters(fname, tone="red_tone")
+    returned_arr_green = cf.colour_filters(fname, tone="green_tone")
+    returned_arr_blue = cf.colour_filters(fname, tone="blue_tone")
+    returned_arr_sepia = cf.colour_filters(fname, tone="sepia")
     
     assert returned_arr_grayscale.shape == test_array[:,:,0].shape
     assert returned_arr_negative.shape == test_array[:,:,0].shape
