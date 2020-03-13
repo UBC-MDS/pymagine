@@ -39,6 +39,7 @@ A variety of image processing packages providing some similar functionality alre
 
 The following python packages are required to run `pymagine`:
 * numpy==1.18.1
+* pandas==1.0.1
 * scikit-image==0.16.1
 * scipy==1.2.3
 * matplotlib==3.1.3
