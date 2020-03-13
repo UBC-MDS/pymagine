@@ -10,8 +10,8 @@ import numpy as np
 def colour_filters(image, tone="sepia"):
   
   """
-  Saves the given image in the current working directory with 
-  the user-specified color filter applied.
+  Saves the given image in the current working directory with the 
+  user-specified color filter applied and returns the altered image array.
   
   Parameters
   ----------
@@ -25,8 +25,8 @@ def colour_filters(image, tone="sepia"):
     
   Returns
   -------
-  image 
-  image returned with desired colour filter applied
+  numpy array 
+  altered image array returned for the input colour filter
   """
   if not isinstance(image, str):
     raise TypeError("File path must be a string")
