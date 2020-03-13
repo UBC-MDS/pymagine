@@ -30,7 +30,7 @@ def tunnel_filter(image_path, rot=0.5):
     numpy array
     Altered image array returned for the input tunnel
     filter
-    
+
     Example
     -------
     >>> tunnel_filter("img/picture.jpeg", rot=0.2)
@@ -53,6 +53,7 @@ def tunnel_filter(image_path, rot=0.5):
 
     # Read in the image file and convert to array
     pic = Image.open(image_path)
+    print("this is printing")
     pic_array = np.array(pic)
 
     # Get height and width
@@ -76,8 +77,8 @@ def tunnel_filter(image_path, rot=0.5):
             r = np.sqrt(norm_x**2 + norm_y**2) / max_radius
 
             # Adding distortion strength
-            x2 = norm_x / (1 + (0.5 * (r**4) + 0.5 * (0.5**2) + 0.5 * r))
-            y2 = norm_y / (1 + (0.5 * (0.5**4) + 0.5 * (0.5**2) + 0.5 * r))
+            x2 = norm_x / (1 + (0.5 * (r**4) + 0.5 * (r**2) + 0.5 * r))
+            y2 = norm_y / (1 + (0.5 * (r**4) + 0.5 * (r**2) + 0.5 * r))
 
             # Adding distortion and rotation
             t = math.atan2(x2, y2)
@@ -89,6 +90,6 @@ def tunnel_filter(image_path, rot=0.5):
             # Applying distortion to new image array
             tunnel_array[x, y] = pic_array[int(x3), int(y3)]
 
-    cv2.imwrite('tunnel.jpg', Image.fromarray(tunnel_array))
+    cv2.imwrite('tunnel.jpg', cv2.UMat(tunnel_array))
     print("The filtered image has been saved to the working directory")
     return tunnel_array
