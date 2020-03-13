@@ -1,13 +1,13 @@
 import os
 import pytest
-import matplotlib.pyplot as plt
+import cv2
 import numpy as np
 
 from pymagine import tunnel_filter as tun
 
 fname = os.path.join(
     os.path.dirname(__file__),
-    '../tests/imgs/coronado_beach.jpg')
+    './imgs/coronado_beach.jpeg')
 bad_ftype = 'imgs/coronado_beach.csv'
 url_fname = 'https://pic.svg'
 
@@ -39,7 +39,7 @@ def test_outputs():
     Applies tests to the tunnel_filter function
     output.
     """
-    test_array = plt.imread(fname)
+    test_array = cv2.imread(fname)
 
     returned_arr = tun.tunnel_filter(fname)
 
