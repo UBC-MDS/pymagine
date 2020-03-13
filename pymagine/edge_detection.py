@@ -9,53 +9,51 @@ from scipy.signal import convolve2d
 import matplotlib.pyplot as plt
 import cv2
 
-def edge_detection(filename, color = 'Greys', is_grey = False):
+
+def edge_detection(filename, is_grey=False):
     """
-    Returns the given image with the user-specified
+    Returns the given image with the greyscale
   edge detection applied.
-  
+
   Parameters
   ----------
   image: string
     The local file path for image to which filter will be applied
-    
-  color: string
-    Color of edge detection filter to be applied to the image 
-    Options: 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds'
-    Default: 'Greys'
 
   is_grey: boolean
     input is True or False depending on whether the image is greyscale or not
-    
+
   Returns
   -------
-  image 
-  image returned with desired edge detection color filter applied
+  numpy array
+  Altered image array returned for the input edge_detection filter
+
+  Example
+  -------
+  >>> edge_detection("img/picture.jpg", color = 'Greys', is_grey = False)
     """
     if not isinstance(filename, str):
         raise TypeError("Image file path must be a string.")
-    
+
     if not filename.endswith((".png", ".jpeg", ".jpg")):
         raise TypeError("Image format must be png, jpg, or jpeg.")
-    
+
     if filename.startswith(("https:", "http:", "www.")):
-        raise TypeError("Image file path can't be a URL, provide a local file path.")
-        
-    if color == "Greys" or color == "Purples" or color == "Blues" or color == "Greens" or color == "Oranges" or color == "Reds":
-        True
-    else:
-        raise ValueError("Color can only be one of: 'Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds'")
-    
-    filt = np.ones((3,3))/8
+        raise TypeError(
+            "Image file path can't be a URL, provide a local file path.")
+
+    filt = np.ones((3, 3)) / 8
 
     if is_grey:
         img = plt.imread(filename)
-        I_filt = convolve2d(img,filt, boundary='symm', mode='same')
+        I_filt = convolve2d(img, filt, boundary='symm', mode='same')
 
     else:
         img = plt.imread(filename)
         img = rgb2gray(img)
-        I_filt = convolve2d(img,filt, boundary='symm', mode='same')
-        
-    cv2.imwrite("edge_detect.jpeg", I_filt)
+        I_filt = convolve2d(img, filt, boundary='symm', mode='same')
+
+    cv2.imwrite('edge_detection.jpg', I_filt)
+
     print("The filtered image has been saved to the working directory")
+    return I_filt
