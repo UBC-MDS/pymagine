@@ -47,13 +47,10 @@ jobs:
       if: always()
       with:
         access-token: ${{ secrets.ACCESS_TOKEN }}
-        owner: UBC-MDS
-        repo: pymagine
     - name: Bump version and tagging and publish
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git pull origin master
         poetry run semantic-release version
         poetry version $(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
         git commit -m "Add changes" -a
