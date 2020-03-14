@@ -64,7 +64,7 @@ Apply a vignette filter to an image:
 
 Apply a colour filter to an image:
 
-`colour_filter("~\image.jpg", tone="blue_tone")`
+`colour_filters("~\image.jpg", tone="blue_tone")`
 ![Colour Effect](docs/img/colour_filter.jpeg)
 
 Apply a tunnel filter to an image:
