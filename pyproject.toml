@@ -2,8 +2,12 @@
 name = "pymagine"
 version = "0.1.0"
 description = "Python package that allows the user to apply filters to images."
-authors = ["Katie Birchard <birchardkatie@gmail.com>"]
+authors = ["Katie Birchard, Sukriti Trehan, Trevor Kwan, Brendon Campbell"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/UBC-MDS/pymagine"
+repository = "https://github.com/UBC-MDS/pymagine"
+documentation = 'https://pymagine.readthedocs.io'
 
 [tool.poetry.dependencies]
 python = "^3.7"
