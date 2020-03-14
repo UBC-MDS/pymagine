@@ -23,7 +23,7 @@ This package includes four main functions that accept an image as input and appl
 3. **Edge detection**: identifies edges by looking at where the image brightness changes sharply, and produces a black and white image highlighting the locations of these edges
 4. **Vignetting**: produces an image with reduced brightness around the periphery compared to the image center, while allowing the user to specify a focal point location around which the effect should be centered
 
-**Package data:** A small set of our own example photos are included with the package for testing the functions
+**Package data:** A small set of example photos are included with the package for testing the functions, with some usage examples outlined below.
 
 ### Our Package in the Python Ecosystem
 
