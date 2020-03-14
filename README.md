@@ -63,17 +63,17 @@ Apply a vignette filter to an image:
 Apply a colour filter to an image:
 
 `colour_filter("~\image.jpg", tone="blue_tone")`
-![Vignette Effect](docs/img/colour_filter.jpeg)
+![Colour Effect](docs/img/colour_filter.jpeg)
 
 Apply a tunnel filter to an image:
 
 `tunnel_filter("~\image.jpg", k=0.5, rot=-0.2)`
-![Vignette Effect](docs/img/tunnel.jpg)
+![Tunnel Effect](docs/img/tunnel.jpg)
 
 Apply an edge detection filter to an image:
 
-`edge_detection("~\image.jpg", color="Purples", is_grey=False)`
-![Vignette Effect](docs/img/edge_detection_image.jpg)
+`edge_detection("~\image.jpg")`
+![Edge Detection Effect](docs/img/edge_detection_image.jpg)
 
 ### Documentation
 The official documentation is hosted on Read the Docs: <https://pymagine.readthedocs.io/en/latest/>
