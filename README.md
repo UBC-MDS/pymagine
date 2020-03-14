@@ -1,6 +1,6 @@
 ## Pymagine 
 
-![](https://github.com/katieb1/pymagine/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/katieb1/pymagine/branch/master/graph/badge.svg)](https://codecov.io/gh/katieb1/pymagine) ![Release](https://github.com/katieb1/pymagine/workflows/Release/badge.svg)
+![](https://github.com/katieb1/pymagine/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/katieb1/pymagine/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pymagine) ![Release](https://github.com/katieb1/pymagine/workflows/Release/badge.svg)
 
 [![Documentation Status](https://readthedocs.org/projects/pymagine/badge/?version=latest)](https://pymagine.readthedocs.io/en/latest/?badge=latest)
 
