@@ -61,6 +61,7 @@ Apply a vignette filter to an image:
 
 
 Apply a colour filter to an image:
+
 `colour_filter("~\image.jpg", tone="blue_tone")`
 ![Vignette Effect](docs/img/colour_filter.jpeg)
 
