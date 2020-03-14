@@ -8,7 +8,7 @@
 
 ### Package Overview & Scope
 
-We intend to design functions that provide several different types of visual manipulations to an input image. Note the initial design will accept single images as inputs, but we intend to consider enhancing the package to apply the effects in bulk to a batch of input images.
+This package includes functions that provide several different types of visual manipulations to an input image.
 
 ### Installation:
 
@@ -18,18 +18,14 @@ pip install -i https://test.pypi.org/simple/ pymagine
 
 ### Features
 
-In this package we intend to create four main functions that accept an image as input and apply different types of manipulations and provide a new output image as summarized below:
+This package includes four main functions that accept an image as input and apply different types of manipulations and provide a new output image as summarized below:
 
 1. **Tunnel distortion**: produces an image with strong visual distortion intended to create a tunnel or pincushion effect
-    - *Stretch goal*: 'barrel' distortion, effectively the inverse of tunnel distortion
-2. **Colour filters**: produces an image with different user-specified colour distortions (ex: sepia tone)
-    - *Stretch goal*: allowing the user to specify the strength of the effect via a parameter
+2. **Colour filters**: produces an image with different user-specified colour distortions (ex: blue tone)
 3. **Edge detection**: identifies edges by looking at where the image brightness changes sharply, and produces a black and white image highlighting the locations of these edges
-    - *Stretch goal*: a more customizable, artistic colourized edge detection filter that would allow the user to specify desired colours for the output image with parameters  (beyond the default black and white) 
-4. **Vignetting**: produces an image with reduced brightness around the periphery compared to the image center
-    - *Stretch goal*: allow the user to specify a focal point location (other than the centre) via parameter, around which the vignetting effect should be applied
+4. **Vignetting**: produces an image with reduced brightness around the periphery compared to the image center, while allowing the user to specify a focal point location around which the effect should be centered
 
-**Package data:** We plan to include a small set of our own photos in the package as sample images for use with the package functions
+**Package data:** A small set of example photos are included with the package for testing the functions, with some usage examples outlined below.
 
 ### Our Package in the Python Ecosystem
 
@@ -56,21 +52,30 @@ Load the pymagine library:
 
 `from pymagine import pymagine`
 
+Example photo taken at Coronado Beach, San Diego:
+
+![Sample Image](docs/img/coronado_beach.jpeg)
+
 Apply a vignette filter to an image:
 
-`vignette_filter("~\image.jpg", strength=0.5, x=0.2, y=0.8)`
+`vignette_filter("~\image.jpg", strength=1.0, x=0.5, y=0.5)`
+![Vignette Effect](docs/img/vignette.jpeg)
+
 
 Apply a colour filter to an image:
 
 `colour_filter("~\image.jpg", tone="blue_tone")`
+![Colour Effect](docs/img/colour_filter.jpeg)
 
 Apply a tunnel filter to an image:
 
 `tunnel_filter("~\image.jpg", k=0.5, rot=-0.2)`
+![Tunnel Effect](docs/img/tunnel.jpg)
 
 Apply an edge detection filter to an image:
 
-`edge_detection("~\image.jpg", color="Purples", is_grey=False)`
+`edge_detection("~\image.jpg")`
+![Edge Detection Effect](docs/img/edge_detection_image.jpg)
 
 ### Documentation
 The official documentation is hosted on Read the Docs: <https://pymagine.readthedocs.io/en/latest/>
