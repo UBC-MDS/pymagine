@@ -50,10 +50,10 @@ The following python packages are required to run `pymagine`:
 
 Load the pymagine library:
 
-`from pymagine import vignette_filter as vignette_filter`
-`from pymagine import colour_filters as colour_filters`
-`from pymagine import tunnel_filter as tunnel_filter`
-`from pymagine import edge_detection as edge_detection`
+`from pymagine import vignette_filter as vf`
+`from pymagine import colour_filters as cf`
+`from pymagine import tunnel_filter as tf`
+`from pymagine import edge_detection as ed`
 
 Example photo taken at Coronado Beach, San Diego:
 
@@ -61,23 +61,23 @@ Example photo taken at Coronado Beach, San Diego:
 
 Apply a vignette filter to an image:
 
-`vignette_filter("~\image.jpg", strength=1.0, x=0.5, y=0.5)`
+`vf.vignette_filter("~\image.jpg", strength=1.0, x=0.5, y=0.5)`
 ![Vignette Effect](docs/img/vignette.jpeg)
 
 
 Apply a colour filter to an image:
 
-`colour_filters("~\image.jpg", tone="blue_tone")`
+`cf.colour_filters("~\image.jpg", tone="blue_tone")`
 ![Colour Effect](docs/img/colour_filter.jpeg)
 
 Apply a tunnel filter to an image:
 
-`tunnel_filter("~\image.jpg", rot=-0.2)`
+`tf.tunnel_filter("~\image.jpg", rot=-0.2)`
 ![Tunnel Effect](docs/img/tunnel.jpg)
 
 Apply an edge detection filter to an image:
 
-`edge_detection("~\image.jpg")`
+`ed.edge_detection("~\image.jpg")`
 ![Edge Detection Effect](docs/img/edge_detection_image.jpg)
 
 ### Documentation
