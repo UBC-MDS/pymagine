@@ -25,7 +25,7 @@ def colour_filters(image, tone="sepia", file_name="colour.jpg"):
       Default: 'sepia'
 
     file_name: string
-      The output file path (including file name) to 
+      The output file path (including file name) to
       the saved image
       Default: "colour.jpg"
 
@@ -52,7 +52,6 @@ def colour_filters(image, tone="sepia", file_name="colour.jpg"):
         "green_tone",
             "sepia"]:
         raise ValueError("Invalid tone value")
-
 
     if not file_name.endswith((".png", ".jpeg", ".jpg")):
         raise TypeError("File name format must be png, jpg, or jpeg.")

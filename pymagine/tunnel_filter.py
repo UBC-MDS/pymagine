@@ -26,7 +26,7 @@ def tunnel_filter(image_path, rot=0.5, file_name="tunnel.jpg"):
       Default: 0.5
 
     file_name: string
-        The output file path (including file name) to 
+        The output file path (including file name) to
         the saved image
         Default: "tunnel.jpg"
 
@@ -38,7 +38,7 @@ def tunnel_filter(image_path, rot=0.5, file_name="tunnel.jpg"):
 
     Example
     -------
-    >>> tunnel_filter("img/picture.jpeg", rot=0.2, 
+    >>> tunnel_filter("img/picture.jpeg", rot=0.2,
             file_name="folder/output.jpg")
     """
     if not isinstance(image_path, str):

@@ -8,7 +8,12 @@ import numpy as np
 import cv2
 
 
-def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5, file_name="vignette.jpg"):
+def vignette_filter(
+        image_path,
+        strength=1.0,
+        x=0.5,
+        y=0.5,
+        file_name="vignette.jpg"):
     """
     Applies vignette filter to a given image at the specified strength
     and focal point then saves the result to the current working directory.
