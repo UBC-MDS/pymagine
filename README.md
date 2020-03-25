@@ -50,7 +50,7 @@ The following python packages are required to run `pymagine`:
 
 Load the pymagine library:
 
-`from pymagine import pymagine`
+`from pymagine import vignette_filter, colour_filters, tunnel_filter, edge_detection`
 
 Example photo taken at Coronado Beach, San Diego:
 
@@ -69,7 +69,7 @@ Apply a colour filter to an image:
 
 Apply a tunnel filter to an image:
 
-`tunnel_filter("~\image.jpg", k=0.5, rot=-0.2)`
+`tunnel_filter("~\image.jpg", rot=-0.2)`
 ![Tunnel Effect](docs/img/tunnel.jpg)
 
 Apply an edge detection filter to an image:
