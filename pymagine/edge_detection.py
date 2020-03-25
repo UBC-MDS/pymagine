@@ -10,10 +10,10 @@ import matplotlib.pyplot as plt
 import cv2
 
 
-def edge_detection(filename):
+def edge_detection(image, file_name="edge.jpg"):
     """
     Returns the given image with the greyscale
-  edge detection applied.
+    edge detection applied.
 
   Parameters
   ----------
@@ -29,23 +29,25 @@ def edge_detection(filename):
   -------
   >>> edge_detection("img/picture.jpg")
     """
-    if not isinstance(filename, str):
+    if not isinstance(image, str):
         raise TypeError("Image file path must be a string.")
 
-    if not filename.endswith((".png", ".jpeg", ".jpg")):
+    if not image.endswith((".png", ".jpeg", ".jpg")):
         raise TypeError("Image format must be png, jpg, or jpeg.")
 
-    if filename.startswith(("https:", "http:", "www.")):
+    if image.startswith(("https:", "http:", "www.")):
         raise TypeError(
             "Image file path can't be a URL, provide a local file path.")
 
+    if not file_name.endswith((".png", ".jpeg", ".jpg")):
+        raise TypeError("File name format must be png, jpg, or jpeg.")
+
     filt = np.ones((3, 3)) / 8
 
-    img = plt.imread(filename)
+    img = plt.imread(image)
     img = rgb2gray(img)
     I_filt = convolve2d(img, filt, boundary='symm', mode='same')
 
-    cv2.imwrite('edge_detection.jpg', I_filt)
+    cv2.imwrite(file_name, I_filt)
 
-    print("The filtered image has been saved to the working directory")
     return I_filt
