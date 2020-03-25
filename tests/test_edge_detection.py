@@ -23,6 +23,9 @@ def test_inputs():
         ed.edge_detection(bad_ftype)  # Filetype is not image
     with pytest.raises(TypeError):
         ed.edge_detection(url_fname)  # Filepath can't be URL
+    # Invalid output file type
+    with pytest.raises(TypeError):
+        ed.edge_detection(fname, file_name=bad_ftype)
 
 
 def test_outputs():

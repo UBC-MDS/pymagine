@@ -15,19 +15,27 @@ def test_inputs():
     """
     Applies tests to the vignette function to confirm handling of valid inputs
     """
+    # Not a string for the file path
     with pytest.raises(TypeError):
-        vig.vignette_filter(True)  # Not a string for the file path
+        vig.vignette_filter(True)
+    # Filetype is not image
     with pytest.raises(TypeError):
-        vig.vignette_filter(bad_ftype)  # Filetype is not image
+        vig.vignette_filter(bad_ftype)
+    # Filepath can't be URL
     with pytest.raises(TypeError):
-        vig.vignette_filter(url_fname)  # Filepath can't be URL
-
+        vig.vignette_filter(url_fname)
+    # Invalid strength value
     with pytest.raises(ValueError):
-        vig.vignette_filter(fname, strength=-1.0)  # Invalid strength value
+        vig.vignette_filter(fname, strength=-1.0)
+    # Invalid x axis value
     with pytest.raises(ValueError):
-        vig.vignette_filter(fname, x=2.0)  # Invalid x axis value
+        vig.vignette_filter(fname, x=2.0)
+    # Invalid y axis value
     with pytest.raises(ValueError):
-        vig.vignette_filter(fname, y=-1.0)  # Invalid y axis value
+        vig.vignette_filter(fname, y=-1.0)
+    # Invalid output file type
+    with pytest.raises(TypeError):
+        vig.vignette_filter(fname, file_name=bad_ftype)
 
 
 def test_outputs():
