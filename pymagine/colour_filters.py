@@ -33,6 +33,11 @@ def colour_filters(image, tone="sepia", file_name="colour.jpg"):
     -------
     numpy array
     altered image array returned for the input colour filter
+
+    Example
+    -------
+    >>> colour_filters("img/picture.jpeg", tone='red_tone',
+            file_name="folder/output.jpg")
     """
     if not isinstance(image, str):
         raise TypeError("File path must be a string")
