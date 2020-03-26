@@ -19,6 +19,9 @@ def edge_detection(image, file_name="edge.jpg"):
   image: string
     The local file path for image to which filter will be applied
 
+  file_name: string
+    The file name for which the image will be saved as
+
   Returns
   -------
   numpy array
