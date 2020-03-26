@@ -38,6 +38,10 @@ def vignette_filter(
       along the y axis.
       Default: 0.5
 
+    file_name: string
+      The filename for the output image
+      Default: "vignette.jpg"
+
     Returns
     -------
     numpy array
@@ -45,7 +49,7 @@ def vignette_filter(
 
     Example
     -------
-    >>> vignette_filter("img/picture.jpeg", strength=2.5, a=0.25, b=0.75)
+    >>> vignette_filter("img/picture.jpeg", strength=2.5, x=0.25, y=0.75)
     """
     if not isinstance(image_path, str):
         raise TypeError("Image file path must be a string.")
@@ -58,7 +62,7 @@ def vignette_filter(
             "Image file path can't be a URL, provide a local file path.")
 
     if strength <= 0.:
-        raise ValueError("Vignette strength can't be negative.")
+        raise ValueError("Vignette strength must be a positive value.")
 
     if x < 0 or x > 1 or y < 0 or y > 1:
         raise ValueError("Centre points must be between 0 and 1.")
