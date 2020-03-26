@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pymagine"
-version = "0.1.4"
+version = "0.1.5"
 description = "Python package that allows the user to apply filters to images."
 authors = ["Katie Birchard, Sukriti Trehan, Trevor Kwan, Brendon Campbell"]
 license = "MIT"
