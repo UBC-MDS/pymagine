@@ -42,12 +42,15 @@ def edge_detection(image, file_name="edge.jpg"):
     if not file_name.endswith((".png", ".jpeg", ".jpg")):
         raise TypeError("File name format must be png, jpg, or jpeg.")
 
+    # setting the filter
     filt = np.ones((3, 3)) / 8
 
+    # loading the image
     img = plt.imread(image)
     img = rgb2gray(img)
     I_filt = convolve2d(img, filt, boundary='symm', mode='same')
 
-    cv2.imwrite(file_name, I_filt)
+    # saving the image
+    plt.imsave(file_name, I_filt)
 
     return I_filt
