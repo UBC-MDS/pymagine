@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def colour_filters(image, tone="sepia"):
+def colour_filters(image, tone="sepia", file_name="colour.jpg"):
     """
     Saves the given image in the current working directory with the
     user-specified color filter applied and returns the altered image array.
@@ -23,6 +23,11 @@ def colour_filters(image, tone="sepia"):
       Options: 'sepia', 'grayscale', 'blue_tone',
                 'green_tone', 'red_tone', 'negative'
       Default: 'sepia'
+
+    file_name: string
+      The output file path (including file name) to
+      the saved image
+      Default: "colour.jpg"
 
     Returns
     -------
@@ -47,6 +52,9 @@ def colour_filters(image, tone="sepia"):
         "green_tone",
             "sepia"]:
         raise ValueError("Invalid tone value")
+
+    if not file_name.endswith((".png", ".jpeg", ".jpg")):
+        raise TypeError("File name format must be png, jpg, or jpeg.")
 
     # Loading the image
     image = plt.imread(image)
@@ -235,7 +243,6 @@ def colour_filters(image, tone="sepia"):
                 transformed_green, n), np.reshape(
                 transformed_blue, n)))
 
-        plt.imsave(fname="colour_filter.jpeg", arr=final_image_array)
+        plt.imsave(fname=file_name, arr=final_image_array)
 
-    print("The filtered image has been saved to the working directory")
     return final_image_array

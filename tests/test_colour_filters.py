@@ -24,6 +24,9 @@ def test_inputs():
         cf.colour_filters(url_fname)  # Filepath can't be URL
     with pytest.raises(ValueError):
         cf.colour_filters(fname, tone="pink")  # Invalid tone value
+    # Invalid output file type
+    with pytest.raises(TypeError):
+        cf.colour_filters(fname, file_name=bad_ftype)
 
 
 def test_outputs():

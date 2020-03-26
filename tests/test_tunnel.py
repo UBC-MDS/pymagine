@@ -14,7 +14,7 @@ url_fname = 'https://pic.svg'
 
 def test_tunnel():
     """
-    Applies tests to the colour_filters function
+    Applies tests to the tunnel_filters function
     to ensure proper usage.
     """
     # File path must be a string
@@ -32,6 +32,9 @@ def test_tunnel():
     # Invalid rotation value
     with pytest.raises(ValueError):
         tun.tunnel_filter(fname, rot=0.6)
+    # Invalid output file type
+    with pytest.raises(TypeError):
+        tun.tunnel_filter(fname, file_name=bad_ftype)
 
 
 def test_outputs():

@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 
 
-def tunnel_filter(image_path, rot=0.5):
+def tunnel_filter(image_path, rot=0.5, file_name="tunnel.jpg"):
     """
     Returns the given image with the user-specified
     pincushion distortion applied.
@@ -25,6 +25,11 @@ def tunnel_filter(image_path, rot=0.5):
       the tunnel image
       Default: 0.5
 
+    file_name: string
+        The output file path (including file name) to
+        the saved image
+        Default: "tunnel.jpg"
+
     Returns
     -------
     numpy array
@@ -33,7 +38,8 @@ def tunnel_filter(image_path, rot=0.5):
 
     Example
     -------
-    >>> tunnel_filter("img/picture.jpeg", rot=0.2)
+    >>> tunnel_filter("img/picture.jpeg", rot=0.2,
+            file_name="folder/output.jpg")
     """
     if not isinstance(image_path, str):
         raise TypeError("Image file path must be a string.")
@@ -51,14 +57,15 @@ def tunnel_filter(image_path, rot=0.5):
     if rot > 0.5 or rot < -0.5:
         raise ValueError("Rotation degree must be within -0.5 and 0.5.")
 
+    if not file_name.endswith((".png", ".jpeg", ".jpg")):
+        raise TypeError("File name format must be png, jpg, or jpeg.")
+
     # Read in the image file and convert to array
     pic = Image.open(image_path)
-    print("this is printing")
     pic_array = np.array(pic)
 
     # Get height and width
     h, w = pic.size
-    print(pic.size)
 
     # Calculate max radius for normalization
     max_radius = math.sqrt(w**2 + h**2) / 2
@@ -90,6 +97,5 @@ def tunnel_filter(image_path, rot=0.5):
             # Applying distortion to new image array
             tunnel_array[x, y] = pic_array[int(x3), int(y3)]
 
-    cv2.imwrite('tunnel.jpg', cv2.UMat(tunnel_array))
-    print("The filtered image has been saved to the working directory")
+    cv2.imwrite(file_name, cv2.UMat(tunnel_array))
     return tunnel_array

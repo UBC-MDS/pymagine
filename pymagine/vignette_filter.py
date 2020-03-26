@@ -8,7 +8,12 @@ import numpy as np
 import cv2
 
 
-def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
+def vignette_filter(
+        image_path,
+        strength=1.0,
+        x=0.5,
+        y=0.5,
+        file_name="vignette.jpg"):
     """
     Applies vignette filter to a given image at the specified strength
     and focal point then saves the result to the current working directory.
@@ -58,6 +63,9 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
     if x < 0 or x > 1 or y < 0 or y > 1:
         raise ValueError("Centre points must be between 0 and 1.")
 
+    if not file_name.endswith((".png", ".jpeg", ".jpg")):
+        raise TypeError("File name format must be png, jpg, or jpeg.")
+
     # read in image file
     image = cv2.imread(image_path, 1)
 
@@ -89,7 +97,6 @@ def vignette_filter(image_path, strength=1.0, x=0.5, y=0.5):
     image_modified[:, :, 2] = image[:, :, 2] * filt_2d_scaled
 
     # write image to disk
-    cv2.imwrite('vignette.jpg', image_modified)
-    print("The filtered image has been saved to the working directory")
+    cv2.imwrite(file_name, image_modified)
 
     return image_modified
