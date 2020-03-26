@@ -7,7 +7,6 @@ import numpy as np
 from skimage.color import rgb2gray
 from scipy.signal import convolve2d
 import matplotlib.pyplot as plt
-import cv2
 
 
 def edge_detection(image, file_name="edge.jpg"):
